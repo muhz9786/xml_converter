@@ -210,8 +210,8 @@ function get_data_from_elements(element_list)
     ]]
     local data_list = {}
     for i, element in pairs(element_list) do
-        local attributes = string.sub(string.match(element, '"[^"]+"'), 2, -2) -- sub用于去除左右""
-        local text = string.sub(string.match(element, ">[^<]+<"), 2, -2) -- sub用于去除左右><
+        local attributes = string.match(element, 'p="(.+)"')
+        local text = string.match(element, ">(.+)</d>")
         local attribute_list = split(attributes, ",")
         local data = {
             -- 各字段含义见函数头部注释
